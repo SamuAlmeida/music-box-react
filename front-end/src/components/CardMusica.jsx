@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import api from "../api";
+import deletarIcone from '../html-css-template/imgs/delete-icon.png'
+import editarIcone from '../html-css-template/imgs/edit-icon.png'
 
 function CardMusica(props) {
+
+  const capaMusica = {
+    backgroundImage: `url(${props.url})`
+  }
+
   return (
     <>
-      <div class="card-music">
-        <div class="info-music">
+      <div className="card-music" style={capaMusica}>
+        <div className="info-music">
           <p>
             <strong>música: </strong>{props.musica}
           </p>
@@ -17,9 +26,14 @@ function CardMusica(props) {
           <p>
             <strong>ano: </strong>{props.ano}
           </p>
-          <p class="icons">
-            <img src="../imgs/edit-icon.png" alt="" />
-            <img src="../imgs/delete-icon.png" alt="" />
+          <p className="icons">
+            <Link to={`/editar/${props.id}`}>
+              <img src={editarIcone} alt="" />
+            </Link>
+            <Link>
+              <img src={deletarIcone} alt=""/>
+            </Link>
+              
           </p>
         </div>
       </div>
